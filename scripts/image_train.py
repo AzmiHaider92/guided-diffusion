@@ -2,7 +2,7 @@
 Train a diffusion model on images.
 """
 
-import argparse
+import configargparse
 import os
 
 from guided_diffusion import dist_util, logger
@@ -75,9 +75,12 @@ def create_argparser():
         use_fp16=False,
         fp16_scale_growth=1e-3,
     )
+
     defaults.update(model_and_diffusion_defaults())
-    parser = argparse.ArgumentParser()
+    parser = configargparse.ArgumentParser()
     add_dict_to_argparser(parser, defaults)
+    parser.add_argument('--config', is_config_file=True,
+                        help='config file path')
     return parser
 
 

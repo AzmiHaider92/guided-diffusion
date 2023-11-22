@@ -8,3 +8,4 @@ guided_diffusion.egg-info/
 *.sqsh
 *.sh
 *.out
+configs/
